@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!-- IMPORTANT: makes it responsive on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SKA Learn With Examples</title>
+
+    <style>
+        /* ---------- RESET ---------- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+        background-image: url("logo_files/matteo-catanese-kSYwKLhTNz0-unsplash.jpg"); /* your image path */
+      background-size: cover;        /* fill screen */
+      background-position:center;   /* center image */
+      background-repeat: no-repeat;  /* no tiling */
+      background-attachment: fixed;  /* optional */
+    /* background-color:#1d2022 ;  
+    color: #0e47b9;             Main text
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, */
+}
+
+
+        /* ---------- HEADER ---------- */
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 25px;
+            /* background-color: #1e1e1e; */
+            /* background-color: #17191a; */
+            /* background-color: rgb(34, 209, 86); */
+            color: white;
+        }
+
+        /* ---------- LEFT SECTION ---------- */
+        .header-left{ 
+            position: absolute;
+        }
+
+        .header-logo {
+            position: relative;
+        width: 180px;        /* size of circle */
+            height: 180px;
+            border-radius: 50%; /* makes it circular */
+            object-fit: cover;  /* prevents image stretch */
+            padding: -0px;
+            top: 80px;       /* space inside circle */
+            /* background-color: rgb(218, 214, 214); */
+            /* background-color: #17191a; visible circle */
+        }
+
+        /* ---------- SEARCH ---------- */
+        .fancy-search {
+            /* position: relative; */
+            width: 260px;
+            top: 20px;
+            left: 240px;
+            position: absolute;
+        }
+
+        .search-box {
+            width: 340px;
+            padding: 12px 12px 12px 42px;
+            font-size: 16px;
+                /* border-color: blue; */
+            border-radius: 25px;
+            /* background-color: #ebe4e4; */
+            /* background-image: url("logo_files/search.png"); */
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: 14px center;
+}
+
+        /* .search-box::placeholder {
+            color: transparent;
+            opacity: 0;
+} */
+
+        .fancy-search input {
+            color: white;
+            width: 100%;
+            padding: 10px 12px;                 
+            border-radius: 0px;
+            /* background-color:  #0e0b0b; */
+            outline: none;
+            font-size: 16px;
+            text-transform:normal;
+            letter-spacing: 2px;
+        }
+
+        .fancy-search ul {
+            position: absolute;
+            top: -15px;
+            left: 14px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: flex;
+            gap: 2px;
+            list-style:none;
+            pointer-events: none;
+        }
+
+        .fancy-search ul li {
+            font-weight: normal;
+            color:white;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.3s ease;
+        }
+
+        .fancy-search input:focus + ul li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fancy-search ul li:nth-child(1) { transition-delay: 0.1s; }
+        .fancy-search ul li:nth-child(2) { transition-delay: 0.2s; }
+        .fancy-search ul li:nth-child(3) { transition-delay: 0.3s; }
+        .fancy-search ul li:nth-child(4) { transition-delay: 0.4s; }
+        .fancy-search ul li:nth-child(5) { transition-delay: 0.5s; }
+        .fancy-search ul li:nth-child(6) { transition-delay: 0.6s; }
+        .fancy-search ul li:nth-child(7) { transition-delay: 0.7s; }
+        .fancy-search ul li:nth-child(8) { transition-delay: 0.8s; }
+        /* ---------- CENTER ---------- */
+        .header-center {
+            flex: 1;
+            text-align: center;
+        }
+
+        .header-center h1 {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        /* ---------- RIGHT ---------- */
+        .header-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-link {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            left:10px;
+            top: 10px;
+        }
+
+        .signup {
+            border: 1px solid white;
+            padding: 5px 12px;
+            border-radius: 6px;
+            top: 5px;
+        }
+
+        /* -- Navy --------------*/
+            nav {
+            /* background-color: rgb(12, 132, 168); */
+            /* background-color: #1e1e1e; */
+            padding: 10px;
+            text-align: center;
+            
+        }
+        nav a {
+            color:black;
+            margin: 0 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #17191a;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+/* =====================================
+   PORTFOLIO SECTION – MAIN LAYOUT
+   ===================================== */
+
+.portfolio-section {
+    padding: 100px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.portfolio-box {
+    max-width: 1200px;
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;              /* allows full-width section below */
+    align-items: flex-start;
+    gap: 60px;
+
+    background: rgba(13, 17, 23, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    padding: 60px;
+    border-radius: 24px;
+    color: #e6edf3;
+}
+
+/* =====================================
+   LEFT SIDE – EDUCATION DETAILS
+   ===================================== */
+
+.education-details {
+    flex: 2;
+}
+
+.education-details p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+    color: #e6edf3;
+}
+
+.education-details strong {
+    font-size: 21px;
+    font-weight: 600;
+}
+/* Guide / Supervisor link */
+.guide-link {
+    color: #e6edf3;          /* soft academic blue */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.guide-link:hover {
+    text-decoration: underline;
+}
+
+/* =====================================
+   RIGHT SIDE – PORTFOLIO IMAGE
+   ===================================== */
+
+.portfolio-image {
+    flex: 1;
+    text-align: center;
+}
+
+.portfolio-image img {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    /* background: rgba(255, 255, 255, 0.1); */
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 30px rgba(34, 209, 86, 0.5);
+}
+
+.portfolio-name {
+    display: block;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* =====================================
+   BELOW BOTH – ABOUT / AUTHOR NOTE
+   ===================================== */
+
+.site-note {
+    flex-basis: 100%;             /* FULL WIDTH BELOW */
+    margin-top: 40px;
+    padding: 25px 30px;
+
+    background: rgba(13, 17, 23, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border-radius: 16px;
+    color: #e6edf3;
+}
+
+.site-note p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+
+/* ===============================
+   SOCIAL ICONS – BELOW PORTFOLIO
+   =============================== */
+
+.social-section {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 40px 0 80px;
+    position:relative;
+    bottom: 80px;
+}
+
+.social-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(13, 17, 23, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.social-circle svg {
+    width: 46px;
+    height: 46px;
+    fill: white;
+}
+
+/* Hover effects */
+.social-circle:hover {
+    transform: translateY(-3px);
+}
+
+/* Brand glow */
+.social-circle.youtube:hover {
+    box-shadow: 0 0 18px rgba(255, 0, 0, 0.7);
+}
+
+.social-circle.linkedin:hover {
+    box-shadow: 0 0 18px rgba(10, 102, 194, 0.8);
+}
+
+
+
+/* ==================================================
+   MOBILE FIX (ABSOLUTE POSITION — SAFE OVERRIDES ONLY)
+   ================================================== */
+@media (max-width: 768px) {
+
+    /* LEFT BLOCK CENTER */
+    .header-left {
+        left: 13%;
+        top: 10px;
+        transform: translateX(-50%);
+    }
+
+    /* LOGO RESIZE */
+    .header-logo {
+        width: 70px;
+        height: 70px;
+        top: 0;
+    }
+
+    /* SEARCH CENTERED UNDER LOGO */
+    .fancy-search {
+        left: 152px;
+        top: 20px;
+        transform: translateX(-50%);
+        width: 180%;
+        max-width: 135px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    /* TITLE PUSHED DOWN */
+    .header-center h1 {
+        margin-top: 130px;
+        font-size: 26px;
+        text-align: center;
+    }
+
+    /* RIGHT LINKS */
+    .header-right {
+        position: absolute;
+        top: 28px;
+        right: 12px;
+    }
+
+    /* NAV LINKS STACK */
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+/* =====================================
+   MOBILE RESPONSIVE FIX (TIGHT & CLEAN)
+   ===================================== */
+
+@media (max-width: 768px) {
+
+    .portfolio-section {
+        padding: 50px 16px;
+    }
+
+    .portfolio-box {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;                 /* 🔽 reduced gap */
+        padding: 28px 18px;
+    }
+
+    /* 1️⃣ PROFILE IMAGE FIRST */
+    .portfolio-image {
+        order: 1;
+        position: relative;
+        text-align: center;
+        margin-bottom: 4px;
+        left: 50px;
+        /* margin-right: 100px;        🔽 minimal gap */
+    }
+
+    .portfolio-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .portfolio-name {
+        font-size: 18px;
+        margin-top: 10px;           /* 🔽 tighter */
+    }
+
+    /* 2️⃣ EDUCATION SECOND */
+    .education-details {
+        order: 2;
+        text-align: center;
+    }
+
+    .education-details p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 14px;       /* 🔽 tighter between degrees */
+    }
+
+    .education-details strong {
+        font-size: 19px;
+    }
+
+    /* 3️⃣ SITE NOTE LAST (FULL WIDTH BELOW) */
+    .site-note {
+        order: 3;
+        position:absolute;
+        width: 96%;
+        margin-top: 800px;          /* 🔽 small separation */
+        padding:28px 18px;
+        /* margin-right: 500px; */
+    }
+
+    .site-note p {
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 14px;
+    }
+}
+@media (max-width: 768px) {
+
+    .social-circle {
+        width: 48px;
+        height: 48px;
+        margin-left: 40px;   /* 👉 shift each circle right */
+        margin-top: 80vh;
+    }
+
+    .social-circle svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <!-- LEFT -->
+<div class="header-left">
+    <a href="index.html">
+        <img src="logo_files/cropped_circle_image (1).png"
+             alt="Logo"
+             class="header-logo">
+    </a>
+</div>
+
+        <label class="fancy-search">
+            <form action="https://www.google.com/search" method="get" target="_blank">
+                <input type="search" class="search-box" name="q" placeholder="Search..">
+
+            <ul>
+                <li>S</li>
+                <li>e</li>
+                <li>a</li>
+                <li>r</li>
+                <li>c</li>
+                <li>h </li>
+                <li>.</li>
+                <li>.</li>
+            </ul>
+            </form>
+        </label>
+    </div>
+
+    <!-- CENTER -->
+    <div class="header-center">
+        <h1>You are Here To Study !</h1>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="header-right">
+        <a href="login.html" class="auth-link">Login</a>
+        <a href="signup.html" class="auth-link signup">Sign Up</a>
+    </div>
+
+</header>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="Osinstallation.html"> Operating System Installations </a>
+	<a href="aptitude.html">Aptitude</a>
+    <a href="engmaths.html">Engineering Mathematics </a>
+    <a href="circuits.html">Electrical Circuits</a>
+    <a href="signalandsystems.html">Signals and Systems </a>
+	<a href="rrbandsscaptitude.html"> RRB/SSC Aptitude </a>
+</nav>
+
+<section class="portfolio-section">
+
+    <div class="portfolio-box">
+
+        <!-- LEFT : EDUCATION DETAILS -->
+        <div class="education-details">
+            <p>
+                <strong>Master of Science (Research)</strong><br>
+                Domain: Signal Processing and Machine Learning<br>
+                Under the guidance of 
+                <a href="https://ee.iittp.ac.in/Faculty_Rkg.html" target="_blank" class="guide-link">
+                Dr. Ramakrishna Sai S. Gorthi
+                                        </a> Sir<br>
+                Department of Electrical Engineering<br>
+                Indian Institute of Technology Tirupati
+</p>
+
+            <p>
+                <strong>Bachelor of Technology (B.Tech)</strong><br>
+                Domain: Electrical and Electronics Engineering<br>
+                Under the guidance of
+                <a href="https://scholar.google.com/citations?user=grEkUaAAAAAJ&hl=en" target="_blank" class="guide-link">
+                Dr. N. M. G. Kumar</a> Sir<br>
+                Department of Electrical and Electronics Engineering<br>
+                Sree Vidyanikethan Engineering College, Tirupati
+            </p>
+        </div>
+
+        <!-- RIGHT : PORTFOLIO IMAGE -->
+        <div class="portfolio-image">
+            <img src="logo_files/1000054760.jpg" alt="Sai Kumar Portfolio Photo">
+            <span class="portfolio-name">TITTALA SAI KUMAR</span>
+        </div>
+
+        <!-- BELOW BOTH : ABOUT / AUTHOR NOTE -->
+        <div class="site-note">
+            <p>
+                This webpage is designed to share knowledge in a simple and clear manner,
+                using easy-to-understand explanations, real-life examples, and analytical
+                content supported by images, charts, and graphs that are relevant to each topic.
+                The same topics are also covered through the associated YouTube channel
+                for better understanding.
+            </p>
+
+            <p>
+                Please note that I am the sole author and editor of this webpage.
+                As a result, there may be a slight delay in uploading all the content.
+                Each topic is carefully reviewed and cross-checked before publication,
+                which may take some time.
+                My goal is to provide <strong>quality content rather than quantity</strong>.
+                I sincerely hope readers will understand and appreciate this approach.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===============================
+     SOCIAL LINKS SECTION
+     =============================== -->
+<section class="social-section">
+
+    <a href="https://www.youtube.com/@Tech_Saikumar" target="_blank" class="social-circle youtube" aria-label="YouTube Channel">
+        <!-- YouTube SVG Icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M23.498 6.186a2.958 2.958 0 0 0-2.08-2.093C19.587 3.5 12 3.5 12 3.5s-7.587 0-9.418.593A2.958 2.958 0 0 0 .502 6.186 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .502 5.814 2.958 2.958 0 0 0 2.08 2.093C4.413 20.5 12 20.5 12 20.5s7.587 0 9.418-.593a2.958 2.958 0 0 0 2.08-2.093A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.502-5.814ZM9.545 15.568V8.432L15.818 12l-6.273 3.568Z"/>
+        </svg>
+    </a>
+
+    <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" target="_blank" class="social-circle linkedin" aria-label="LinkedIn Profile">
+        <!-- LinkedIn SVG Icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.266 2.37 4.266 5.455v6.286ZM5.337 7.433a2.063 2.063 0 1 1 0-4.126 2.063 2.063 0 0 1 0 4.126ZM6.813 20.452H3.861V9h2.952v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.727v20.545C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.273V1.727C24 .774 23.2 0 22.222 0Z"/>
+        </svg>
+    </a>
+
+</section>
+
+
+</div>
+
+
+
+</section>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- IMPORTANT: makes it responsive on all devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+    <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background-image: url("logo_files/tavis-beck-uqEsOVsSxrM-unsplash.jpg"); /* your image path */
+      background-size: cover;        /* fill screen */
+      background-position: center;   /* center image */
+      background-repeat: no-repeat;  /* no tiling */
+      background-attachment: fixed;  /* optional */
+      font-family: Arial, sans-serif;
+    }
+  </style>
+
+<body>
+
+<h2>Login</h2>
+
+<input type="email" id="email" placeholder="Email" required>
+<br><br>
+<input type="password" id="password" placeholder="Password" required>
+<br><br>
+
+<button onclick="login()">Login</button>
+
+<p id="msg"></p>
+
+<p>
+  New user? <a href="signup.html">Sign up</a>
+</p>
+
+<p>
+  <a href="reset.html">Forgot password?</a>
+</p>
+
+
+<script src="js/auth.js"></script>
+</body>
+</html>

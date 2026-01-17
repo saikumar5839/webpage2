@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- IMPORTANT: makes it responsive on all devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+    <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background-image: url("logo_files/konstantin-dyadyun-7-6Fhdc2LJc-unsplash.jpg"); /* your image path */
+      background-size: cover;        /* fill screen */
+      background-position:center;   /* center image */
+      background-repeat: no-repeat;  /* no tiling */
+      background-attachment: fixed;  /* optional */
+      font-family: Arial, sans-serif;
+      
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+<h2>Create Account</h2>
+
+<input type="email" id="email" placeholder="Email" required>
+<br><br>
+<input type="password" id="password" placeholder="Password" required>
+<br><br>
+
+<button onclick="signup()">Sign Up</button>
+
+<p id="msg"></p>
+
+<p>
+  Already have an account? <a href="login.html">Login</a>
+</p>
+
+<script src="js/auth.js"></script>
+</body>
+</html>

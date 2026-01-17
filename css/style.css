@@ -1,0 +1,22 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 40px;
+  /* align-items: center; */
+  /* left:1000px; */
+}
+
+input, button {
+  padding: 10px;
+  /* left: 1000px; */
+  width: 260px;
+}
+
+button {
+  cursor: pointer;
+}
+
+#msg {
+  color: rgb(201, 20, 20);
+  margin-top: 10px;
+}
